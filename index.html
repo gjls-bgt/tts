@@ -43,9 +43,8 @@
         🧩
       </div>
       <h1 class="text-3xl sm:text-4xl font-black tracking-tight text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-violet-600 mb-2">
-        TTS Edukasi
+        TTS EDUKASI
       </h1>
-      <p class="text-slate-500 text-sm max-w-xs mx-auto">Asah kemampuan berpikir dan perluas wawasan dengan cara yang seru!</p>
     </div>
 
     <div class="w-full bg-white/80 backdrop-blur-md p-6 sm:p-8 rounded-3xl shadow-xl border border-slate-200/60">
@@ -61,49 +60,44 @@
 
 
   <div id="game-screen" class="flex-1 flex flex-col hidden">
-    <header class="bg-white/80 backdrop-blur-md shadow-xs border-b border-slate-200/80 py-4 px-4 sm:px-6 sticky top-0 z-40 w-full">
-      <div class="max-w-4xl mx-auto flex items-center justify-between gap-4">
-        <h1 class="text-lg font-bold tracking-tight text-indigo-600 flex items-center gap-2 select-none">
-          🧩TTS: <span id="current-level-title"></span>
-        </h1>
-        <div class="flex items-center gap-2">
-            <button onclick="backToHome()" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs sm:text-sm rounded-xl border border-slate-200 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer transform active:scale-95">
-                Home
-            </button>
-            <button onclick="checkAnswers()" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs transition-all flex items-center gap-1.5 cursor-pointer transform active:scale-95">
-                Periksa
-            </button>
-            <button onclick="resetGrid()" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs sm:text-sm rounded-xl border border-slate-200 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer transform active:scale-95">
-                Reset
-            </button>
+    <div class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md shadow-xs border-b border-slate-200/80">
+      <header class="py-3 px-4 sm:px-6 border-b border-slate-100">
+        <div class="max-w-4xl mx-auto flex items-center justify-between gap-4">
+          <h1 class="text-lg font-bold tracking-tight text-indigo-600 flex items-center gap-2 select-none">
+            🧩 TTS: <span id="current-level-title"></span>
+          </h1>
+          <div class="flex items-center gap-2">
+              <button onclick="backToHome()" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs sm:text-sm rounded-xl border border-slate-200 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer transform active:scale-95">
+                  Home
+              </button>
+              <button onclick="checkAnswers()" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs transition-all flex items-center gap-1.5 cursor-pointer transform active:scale-95">
+                  Periksa
+              </button>
+              <button onclick="resetGrid()" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs sm:text-sm rounded-xl border border-slate-200 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer transform active:scale-95">
+                  Reset
+              </button>
+          </div>
+        </div>
+      </header>
+
+      <div class="max-w-xl mx-auto p-3 flex flex-col justify-center min-h-[70px]">
+        <div id="top-clue-display" class="flex flex-col gap-0.5 text-center">
+          <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400">📖 Petunjuk Soal Aktif</p>
+          <p class="text-xs sm:text-sm font-semibold text-slate-400 italic">Ketuk salah satu kotak huruf untuk memuat pertanyaan.</p>
         </div>
       </div>
-    </header>
+    </div>
 
-    <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-6 sm:py-8 flex flex-col items-center justify-center">
-      <div class="w-full bg-blue-200 p-2 sm:p-2 rounded-2xl shadow-xs border border-slate-200 flex flex-col items-center">
+    <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-6 flex flex-col items-center justify-start">
+      <div class="w-full bg-slate-100/50 p-3 sm:p-4 rounded-3xl border border-slate-200/60 flex flex-col items-center">
         <div class="w-full overflow-auto custom-scroll flex justify-start md:justify-center py-4 px-2 bg-slate-50 border border-slate-100 rounded-2xl">
           <div id="grid-scroll-box" class="transition-all duration-300 shrink-0">
             <div id="tts-grid" class="bg-slate-900 p-2 rounded-xl border-4 border-slate-800 shadow-inner grid gap-1 select-none">
-            </div>
+              </div>
           </div>
         </div>
       </div>
     </main>
-  </div>
-
-
-  <div id="clue-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 z-50 hidden">
-    <div class="bg-white rounded-2xl max-w-sm sm:max-w-md w-full shadow-xl border border-slate-200 p-5 sm:p-6 transform scale-95 transition-transform animate-fade-in">
-      <div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-2.5">
-        <h3 class="text-md sm:text-lg font-bold text-slate-800 flex items-center gap-1.5">📖 Pertanyaan:</h3>
-        <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-semibold cursor-pointer leading-none">&times;</button>
-      </div>
-      <div id="modal-clues-list" class="space-y-3.5"></div>
-      <div class="mt-5 flex justify-end">
-        <button onclick="closeModal()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-semibold rounded-xl cursor-pointer">JAWAB</button>
-      </div>
-    </div>
   </div>
 
 
@@ -123,7 +117,6 @@
     let currentLevelData = null;
     let currentDirection = "across";
     let activeInputCell = null;
-    let isModalOpening = false;
 
     // Dipanggil saat aplikasi pertama kali terbuka
     window.addEventListener("DOMContentLoaded", loadLevelMenu);
@@ -167,12 +160,21 @@
     function selectLevel(url) {
       document.getElementById("home-screen").classList.add("hidden");
       document.getElementById("game-screen").classList.remove("hidden");
+      resetClueDisplay();
       loadLevel(url);
     }
 
     function backToHome() {
       document.getElementById("game-screen").classList.add("hidden");
       document.getElementById("home-screen").classList.remove("hidden");
+    }
+
+    function resetClueDisplay() {
+      const display = document.getElementById("top-clue-display");
+      display.innerHTML = `
+        <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400">📖 Petunjuk Soal Aktif</p>
+        <p class="text-xs sm:text-sm font-semibold text-slate-400 italic">Ketuk salah satu kotak huruf untuk memuat pertanyaan.</p>
+      `;
     }
 
     async function loadLevel(url) {
@@ -195,7 +197,7 @@
       gridContainer.innerHTML = "";
       document.getElementById("current-level-title").innerText = data.title || "Teka-Teki Silang";
 
-      const cellWidth = 44; 
+      const cellWidth = 36; 
       const maxVisibleCols = 12;
 
       scrollBox.parentElement.style.overflowX = "auto";
@@ -214,7 +216,7 @@
       }
 
       gridContainer.className = "bg-slate-900 p-2 rounded-xl border-4 border-slate-800 shadow-inner grid gap-1 select-none w-max";
-      gridContainer.style.gridTemplateColumns = `repeat(${data.cols}, minmax(40px, 1fr))`;
+      gridContainer.style.gridTemplateColumns = `repeat(${data.cols}, minmax(32px, 1fr))`;
 
       let matrix = Array(data.rows).fill(null).map(() => 
         Array(data.cols).fill(null).map(() => ({ blocked: true, answer: "", label: "", attachedQuestions: [] }))
@@ -245,7 +247,7 @@
       for (let r = 0; r < data.rows; r++) {
         for (let c = 0; c < data.cols; c++) {
           const cellWrapper = document.createElement("div");
-          cellWrapper.className = "relative w-10 h-10 flex items-center justify-center rounded-md transition-all shrink-0 aspect-square";
+          cellWrapper.className = "relative w-8 h-8 flex items-center justify-center rounded-md transition-all shrink-0 aspect-square";
 
           if (matrix[r][c].blocked) {
             cellWrapper.className += " bg-slate-900";
@@ -255,42 +257,70 @@
             const input = document.createElement("input");
             input.type = "text";
             input.size = 1;
-            input.className = "w-full h-full text-center p-0 font-black text-lg text-slate-800 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 uppercase cursor-pointer transition-shadow select-all";
+            input.className = "w-full h-full text-center p-0 font-black text-base text-slate-800 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 uppercase cursor-pointer transition-shadow select-all";
             input.dataset.row = r;
             input.dataset.col = c;
             input.dataset.answer = matrix[r][c].answer;
             input.dataset.clues = JSON.stringify(matrix[r][c].attachedQuestions);
 
+            // LOGIKA NAVIGASI TOMBOL PANAH & BACKSPACE OTOMATIS MUNDUR
             input.addEventListener("keydown", function(e) {
+              const r = parseInt(this.dataset.row);
+              const c = parseInt(this.dataset.col);
+
               if (e.key === "ArrowRight" || e.key === "ArrowLeft") currentDirection = "across";
               if (e.key === "ArrowDown" || e.key === "ArrowUp") currentDirection = "down";
               
+              // Aksi Tombol Backspace
+              if (e.key === "Backspace") {
+                if (this.value === "") {
+                  let prevInput = null;
+                  if (currentDirection === "across") {
+                    prevInput = document.querySelector(`input[data-row='${r}'][data-col='${c - 1}']`);
+                  } else {
+                    prevInput = document.querySelector(`input[data-row='${r - 1}'][data-col='${c}']`);
+                  }
+
+                  if (prevInput) {
+                    prevInput.focus();
+                    prevInput.value = "";
+                    prevInput.parentElement.classList.remove("bg-emerald-100/80", "bg-rose-100/80", "ring-2", "ring-emerald-400", "ring-rose-400");
+                    prevInput.parentElement.classList.add("bg-white");
+                  }
+                  e.preventDefault();
+                } else {
+                  this.parentElement.classList.remove("bg-emerald-100/80", "bg-rose-100/80", "ring-2", "ring-emerald-400", "ring-rose-400");
+                  this.parentElement.classList.add("bg-white");
+                }
+              }
+
               if (e.key.length === 1 && e.key.match(/[a-z]/i)) {
                 this.value = ""; 
               }
             });
 
             input.addEventListener("mousedown", function() {
-              if (document.activeElement === this) {
-                const cluesData = JSON.parse(this.dataset.clues || "[]");
-                if (cluesData.length > 1) {
-                  currentDirection = (currentDirection === "across") ? "down" : "across";
-                }
-                return;
+              activeInputCell = this;
+              const cluesData = JSON.parse(this.dataset.clues || "[]");
+              
+              if (document.activeElement === this && cluesData.length > 1) {
+                currentDirection = (currentDirection === "across") ? "down" : "across";
               }
-              isModalOpening = true;
+              updateTopClueDisplay(cluesData);
             });
 
             input.addEventListener("focus", function() {
-              if (isModalOpening) {
-                openClueModal(this);
-                isModalOpening = false;
-              }
+              activeInputCell = this;
+              const cluesData = JSON.parse(this.dataset.clues || "[]");
+              updateTopClueDisplay(cluesData);
             });
 
             input.addEventListener("input", (e) => {
               if (e.target.value.length >= 1) {
                 e.target.value = e.target.value.slice(-1).toUpperCase();
+                e.target.parentElement.classList.remove("bg-emerald-100/80", "bg-rose-100/80", "ring-2", "ring-emerald-400", "ring-rose-400");
+                e.target.parentElement.classList.add("bg-white");
+                
                 focusNextCell(parseInt(input.dataset.row), parseInt(input.dataset.col));
               }
             });
@@ -309,53 +339,35 @@
       }
     }
 
-    function openClueModal(inputElement) {
-      activeInputCell = inputElement;
-      const cluesData = JSON.parse(inputElement.dataset.clues || "[]");
-      const listContainer = document.getElementById("modal-clues-list");
-      
-      listContainer.innerHTML = "";
+    function updateTopClueDisplay(cluesData) {
+      const display = document.getElementById("top-clue-display");
       if (cluesData.length === 0) return;
 
       if (cluesData.length === 1) {
         currentDirection = cluesData[0].direction;
       }
 
-      cluesData.forEach(q => {
-        const itemBox = document.createElement("div");
-        const isAcross = q.direction === "across";
-        const isActiveDirection = currentDirection === q.direction;
-        
-        itemBox.className = `p-3 rounded-xl border transition-all cursor-pointer flex flex-col gap-1 ${
-          isAcross 
-            ? (isActiveDirection ? 'bg-indigo-50 border-indigo-400 ring-2 ring-indigo-100' : 'bg-slate-50 hover:bg-indigo-50/40 border-slate-200/60') 
-            : (isActiveDirection ? 'bg-emerald-50 border-emerald-400 ring-2 ring-emerald-100' : 'bg-slate-50 hover:bg-emerald-50/40 border-slate-200/60')
-        }`;
-        
-        itemBox.innerHTML = `
-          <div class="flex items-center gap-1.5 text-[11px] font-bold ${isAcross ? 'text-indigo-600' : 'text-emerald-600'}">
-            <span>${isAcross ? '➡️ Mendatar' : '⬇️ Menurun'}</span>
-            <span class="bg-white/90 px-1.5 py-0.5 rounded border border-current text-[9px]">No. ${q.id}</span>
-            ${isActiveDirection ? '<span class="ml-auto text-[9px] bg-current text-white px-1.5 py-0.5 rounded-md">Aktif</span>' : ''}
-          </div>
-          <p class="text-xs sm:text-sm font-medium text-slate-700 leading-relaxed">${q.clue}</p>
-        `;
+      let activeClue = cluesData.find(q => q.direction === currentDirection);
+      
+      if (!activeClue) {
+        activeClue = cluesData[0];
+        currentDirection = activeClue.direction;
+      }
 
-        itemBox.addEventListener("click", () => {
-          currentDirection = q.direction;
-          closeModal();
-        });
+      const isAcross = activeClue.direction === "across";
+      const badgeColor = isAcross ? "bg-indigo-100 text-indigo-700 border-indigo-200" : "bg-emerald-100 text-emerald-700 border-emerald-200";
+      const directionText = isAcross ? "➡️ Mendatar" : "⬇️ Menurun";
 
-        listContainer.appendChild(itemBox);
-      });
-
-      document.getElementById("clue-modal").classList.remove("hidden");
-    }
-
-    function closeModal() {
-      document.getElementById("clue-modal").classList.add("hidden");
-      isModalOpening = false;
-      if (activeInputCell) activeInputCell.focus();
+      display.innerHTML = `
+        <div class="flex items-center justify-center gap-2 mb-0.5">
+          <span class="px-1.5 py-0.5 rounded-md text-[10px] font-extrabold uppercase tracking-wide border ${badgeColor}">
+            ${directionText}
+          </span>
+          <span class="text-xs font-black text-slate-500">No. ${activeClue.id}</span>
+        </div>
+        <p class="text-xs sm:text-sm font-bold text-slate-700 leading-snug px-4">${activeClue.clue}</p>
+        ${cluesData.length > 1 ? '<p class="text-[9px] text-indigo-500 font-medium mt-0.5 animate-pulse">💡 Ketuk kotak lagi untuk mengubah arah isian</p>' : ''}
+      `;
     }
 
     function focusNextCell(currentRow, currentCol) {
@@ -367,7 +379,6 @@
       }
       
       if (nextInput) {
-        isModalOpening = false; 
         nextInput.focus();
       }
     }
@@ -428,6 +439,7 @@
         input.parentElement.classList.remove("bg-emerald-100/80", "bg-rose-100/80", "ring-2", "ring-emerald-400", "ring-rose-400");
         input.parentElement.classList.add("bg-white");
       });
+      resetClueDisplay();
     }
   </script>
 </body>
