@@ -1,0 +1,20 @@
+[
+  {
+    "id": "01",
+    "name": "Level 1: Dasar Web",
+    "description": "Menguji pemahaman dasar tentang dunia web",
+    "file": "levels/level1.json"
+  },
+  {
+    "id": "02",
+    "name": "Level 2: Antonim",
+    "description": "Tantangan kosakata lawan kata Bahasa Indonesia",
+    "file": "levels/antonim.json"
+  },
+  {
+    "id": "03",
+    "name": "Level 3: Tata Surya",
+    "description": "Uji wawasanmu seputar astronomi dan planet",
+    "file": "levels/tatasurya.json"
+  }
+]
